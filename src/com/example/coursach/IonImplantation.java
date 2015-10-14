@@ -1,48 +1,41 @@
 package com.example.coursach;
 
-/**
- * Created by ashab_000 on 9/29/2015.
- */
 public class IonImplantation {
-//    public static void _main(String args[]){
-//        System.out.println("asd");
-//    }
 
-    public int siAtomNumber = 14;
-    public double siConcentration = 5.04e22;
-    public double siAtomMass = 28;
-
-    public double R = 0;
-
-    public double Sn(int implAtomNumber, double implAtomMass){
-        return 0.278 * implAtomNumber * this.siAtomNumber * implAtomMass * this.siConcentration /
-                (Math.sqrt(Math.pow(implAtomNumber, 2/3) + Math.pow(this.siAtomNumber, 2/3)) * (implAtomMass + this.siAtomMass));
+    public double K = 1;
+    //these variables named like this because of book`s explanation
+    public double A = 0;
+    public double a0 = 0;
+    public double b0 = 0;
+    public double b1 = 0;
+    public double b2 = 0;
+    public void A(double gamma, double beta){
+        this.A = 10*beta-12*gamma*gamma-18;
+    }
+    public void a0(double gamma, double beta, double dRp){
+        this.a0 = -(dRp*gamma*(beta+3)/this.A);
+    }
+    public void b0(double gamma, double beta, double dRp){
+        this.b0 = -(dRp*(4*beta-3*gamma*gamma)/this.A);
+    }
+    public void b1(){
+        this.b1 = a0;
+    }
+    public void b2(double gamma, double beta, double dRp){
+        this.b2 = -(2*beta-3*gamma*gamma-dRp)/this.A;
     }
 
-    public double Se(double sqrtE, int implAtomNumber, double implAtomMass){
-        return 3.28 * 0.001 * (implAtomNumber + this.siAtomNumber) * this.siConcentration * sqrtE / Math.sqrt(implAtomMass);
+    public void setData(double gamma, double beta, double dRp){
+        this.A(gamma, beta);
+        this.a0(gamma, beta, dRp);
+        this.b0(gamma, beta, dRp);
+        this.b1();
+        this.b2(gamma, beta, dRp);
     }
 
-    public double R(int _energy, int implAtomNumber, double implAtomMass){
-        double R = 0;
-        double sqrtE = Math.sqrt(_energy);
-
-        for(int e = 0; e < _energy; e+=0.01){
-            R = 1/( Sn(implAtomNumber, implAtomMass) + Se(sqrtE, implAtomNumber, implAtomMass));
-        }
-
-        this.R = R;
-        return R;
+    public IonImplantation(String ion, double dose, double energy){
+        IonInformation ionInf = new IonInformation(ion);
+        setData(ionInf.gamma, ionInf.beta, ionInf.dRp);
+        double answer;
     }
-
-    public double Rp(double implAtomMass){
-        return this.R/(1+1/(3*(implAtomMass/this.siAtomMass)));
-    }
-
-    public double dRp(double implAtomMass){
-        return Math.sqrt(2/3 * implAtomMass * this.siAtomMass) * Rp(implAtomMass) / (implAtomMass + this.siAtomMass);
-    }
-
-    //public double N(double dose, )
-
 }
