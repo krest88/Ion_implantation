@@ -5,8 +5,6 @@ import java.awt.event.*;
 
 public class MainWindow extends JDialog {
     private JPanel contentPane;
-    private JButton buttonOK;
-    private JButton buttonCancel;
     private JButton BuildPlotButton;
     private JRadioButton bRadioButton;
     private JRadioButton pRadioButton;
@@ -19,20 +17,18 @@ public class MainWindow extends JDialog {
     public MainWindow() {
         setContentPane(contentPane);
         setModal(true);
-        getRootPane().setDefaultButton(buttonOK);
 
-        buttonOK.addActionListener(new ActionListener() {
+        //skdskldfs'f
+        IonImplantation ii = new IonImplantation("B", 10, 50000);
+        //ii.ConcentrationProfile();
+
+        bRadioButton.addActionListener(new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e) {
-                onOK();
+                //ii = null;
+
             }
         });
-
-        buttonCancel.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onCancel();
-            }
-        });
-
 
 // call onCancel() when cross is clicked
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -41,18 +37,10 @@ public class MainWindow extends JDialog {
                 onCancel();
             }
         });
-
-// call onCancel() on ESCAPE
-        contentPane.registerKeyboardAction(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onCancel();
-            }
-        }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
     }
 
-    private void onOK() {
-// add your code here
-        dispose();
+    private void onClick(){
+
     }
 
     private void onCancel() {
