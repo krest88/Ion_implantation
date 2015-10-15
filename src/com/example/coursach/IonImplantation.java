@@ -34,7 +34,7 @@ public class IonImplantation {
     }
 
     public double ConcentrationProfile(double x){
-        double answer = this.K*(Math.pow(1+Math.pow(x/this._a,2), -(this._r+2)/2)*Math.exp(-this._v*Math.atan(x/this._a)));
+        double answer = this.dose*this.K*(Math.pow(1+Math.pow(x/this._a,2), -(5)/2)*Math.exp(-this._v*Math.atan(x/this._a)));
 
         return answer;
     }

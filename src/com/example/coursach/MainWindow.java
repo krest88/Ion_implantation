@@ -21,7 +21,7 @@ public class MainWindow extends JDialog {
         setModal(true);
 
         //skdskldfs'f
-        IonImplantation ii = new IonImplantation("B", 1e11, 100000);
+        IonImplantation ii = new IonImplantation("B", 1e15, 100000);
         //ii.ConcentrationProfile();
 
         BuildPlotButton.addActionListener(new ActionListener() {
@@ -36,28 +36,28 @@ public class MainWindow extends JDialog {
         bRadioButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ii.ChangeData("B", 1e11, 100000);
+                ii.ChangeData("B", 1e15, 100000);
 
             }
         });
         pRadioButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ii.ChangeData("P", 1e11, 50000);
+                ii.ChangeData("P", 1e15, 50000);
 
             }
         });
         asRadioButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ii.ChangeData("As", 1e11, 50000);
+                ii.ChangeData("As", 1e15, 50000);
 
             }
         });
         sbRadioButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ii.ChangeData("Sb", 1e11, 50000);
+                ii.ChangeData("Sb", 1e15, 120000);
 
             }
         });
