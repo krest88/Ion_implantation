@@ -7,5 +7,5 @@ Ion implantation of B, P, As, Sb in waffle of Si.
 
 
 Default properties: 
- - energy: 50 eV;
+ - energy: 50 keV;
  - dose: 1e15 ion/sm^2
