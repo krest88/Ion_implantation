@@ -2,6 +2,8 @@ package com.example.coursach;
 
 import javax.swing.*;
 import java.awt.event.*;
+import org.jfree.ui.RefineryUtilities;
+
 
 public class MainWindow extends JDialog {
     private JPanel contentPane;
@@ -19,13 +21,43 @@ public class MainWindow extends JDialog {
         setModal(true);
 
         //skdskldfs'f
-        IonImplantation ii = new IonImplantation("B", 10, 50000);
+        IonImplantation ii = new IonImplantation("B", 1e11, 100000);
         //ii.ConcentrationProfile();
+
+        BuildPlotButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                BuildPlot(ii);
+
+            }
+        });
 
         bRadioButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //ii = null;
+                ii.ChangeData("B", 1e11, 100000);
+
+            }
+        });
+        pRadioButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ii.ChangeData("P", 1e11, 50000);
+
+            }
+        });
+        asRadioButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ii.ChangeData("As", 1e11, 50000);
+
+            }
+        });
+        sbRadioButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ii.ChangeData("Sb", 1e11, 50000);
 
             }
         });
@@ -37,6 +69,13 @@ public class MainWindow extends JDialog {
                 onCancel();
             }
         });
+    }
+
+    private void BuildPlot(IonImplantation ii){
+        final Chart demo = new Chart("Concentration profile in waffle of Si", ii);
+        demo.pack();
+        RefineryUtilities.centerFrameOnScreen(demo);
+        demo.setVisible(true);
     }
 
     private void onClick(){
