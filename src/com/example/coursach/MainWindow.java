@@ -21,7 +21,7 @@ public class MainWindow extends JDialog {
         setModal(true);
 
         //skdskldfs'f
-        IonImplantation ii = new IonImplantation("B", 1e15, 100000);
+        IonImplantation ii = new IonImplantation("B", 1e15, 50000);
         //ii.ConcentrationProfile();
 
         BuildPlotButton.addActionListener(new ActionListener() {
@@ -36,7 +36,7 @@ public class MainWindow extends JDialog {
         bRadioButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ii.ChangeData("B", 1e15, 100000);
+                ii.ChangeData("B", 1e15, 50000);
 
             }
         });

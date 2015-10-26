@@ -7,7 +7,7 @@ import java.util.logging.ConsoleHandler;
 
 public class IonImplantation {
 
-    private double K = 1;
+    private double K = 1/Math.sqrt(2*Math.PI);
     private double Rp = 0;
     private double dRp = 0;
     private double dose = 0;
@@ -85,16 +85,19 @@ public class IonImplantation {
     public double getRp(){
         return this.Rp;
     }
+    public double getdRp(){
+        return this.dRp;
+    }
 
 
-//    public double ConcentrationProfile(double x){
-//        double answer = this.dose*
-//                        (this.K*Math.pow(this.b2*Math.pow(x-this.Rp, 2)+
-//                        this.b1*(x-this.Rp)+this.b0, 1/(2*this.b2))
-//                        *Math.exp(-(this.b1/this.b2+2*this.a0)/Math.pow(4*this.b2*this.b0-this.b1*this.b1, 0.5)
-//                        *Math.atan((2*this.b2*(x-this.Rp)+this.b1)/Math.sqrt(4*this.b2*this.b0-this.b1*this.b1)))
-//                );
-//
-//        return answer;
-//    }
+    public double ConcentrationProfile2(double x){
+        double answer = this.dose*
+                        (this.K*Math.pow(this.b2*Math.pow(x-this.Rp, 2)+
+                        this.b1*(x-this.Rp)+this.b0, 1/(2*this.b2))
+                        *Math.exp(-(this.b1/this.b2+2*this.a0)/Math.pow(4*this.b2*this.b0-this.b1*this.b1, 0.5)
+                        *Math.atan((2*this.b2*(x-this.Rp)+this.b1)/Math.sqrt(4*this.b2*this.b0-this.b1*this.b1)))
+                );
+
+        return answer;
+    }
 }
